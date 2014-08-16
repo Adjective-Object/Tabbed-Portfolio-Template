@@ -1,0 +1,224 @@
+$transition-speed: 0.3s;
+$transition-speed-long: 0.5s;
+
+@import 'imagenav';
+@import 'pagecontents';
+
+@mixin background-opacity($color, $opacity: 0.3) {
+    background: $color; /* The Fallback */
+    background: rgba($color, $opacity);
+}
+
+@mixin shadow-down(){	
+	-webkit-box-shadow: 0px 2px 20px 0px rgba(34,34,34,0.2);
+	-moz-box-shadow: 0px 2px 20px 0px rgba(34,34,34,0.2);
+	box-shadow: 0px 2px 20px 0px rgba(34,34,34,0.2);
+}
+
+* {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+
+	box-sizing:border-box !important;
+}
+
+html, body{
+	width: 100%;
+	height: 100%;
+}
+
+h1, h2, h3, h4{
+	font-family: Dosis;
+	padding:0px;
+}
+
+h1 {
+	font-weight: 600;
+	font-size: $gridunit * 2;
+	line-height:$gridunit * 2;
+	margin-bottom: $gridunit/4;
+}
+
+h2 {
+	font-weight: 400;
+	font-size: $gridunit * 1.5;
+	line-height:$gridunit * 1.5;
+	margin-bottom: $gridunit/4;
+}
+
+h3 {
+	font-weight: 400;
+	font-size: $gridunit;
+	line-height:$gridunit;
+	text-decoration:underline;
+	margin-bottom: $gridunit/4;
+}
+
+nav#tabs {
+	display: block;
+	position:relative;
+	z-index:10;
+	float: left;
+	width: 100%;
+	font-size: 0;
+
+	height: $gridunit * 3;
+
+	@include shadow-down();
+
+	a {
+		overflow:hidden;
+		position:relative;
+
+		display: inline-block;
+		color: #E0E0E0;
+
+		font-family:Dosis;
+		font-weight:600;
+		text-decoration: none;
+		text-align:center;
+
+		width: 20%;
+		&.selected{
+			width:40%;
+		}
+
+		padding-top:$gridunit;
+		padding-bottom:$gridunit;
+		font-size:$gridunit;
+
+		line-height:$gridunit;
+
+		&:after {
+			content:"";
+			position:absolute;
+			top:0;
+			left:0;
+			width:100%;
+			height:100%;
+			z-index:-1;
+		}
+
+		@include animates();
+
+		transition:width $transition-speed;
+		-o-transition:width $transition-speed;
+		-moz-transition:width $transition-speed;
+		-webkit-transition:width $transition-speed;
+
+	}
+
+	a[href="#about"]{
+		background-color:$color-about;	
+	}
+	
+	a[href="#progs"]{
+		background-color:$color-progs;	
+	}
+	
+	a[href="#artwk"]{
+		background-color:$color-artwk;	
+	}
+	
+	a[href="#conta"]{
+		background-color:$color-conta;	
+	}
+	
+}
+
+#wrapper{
+	height:100%;
+}
+
+.tabbody {
+	position:absolute;
+	top: $gridunit * 3;
+	bottom:0;
+	left:0;
+	right:0;
+
+	z-index:1;
+
+	width:100%;
+	overflow:scroll;
+	margin-top:0;
+
+	font-family:Dosis;
+	font-weight:200;
+
+	background-color:#EEEEEE;
+
+	@include shadow-down();
+
+	transition:all $transition-speed-long;
+	-o-transition:all $transition-speed-long;
+	-moz-transition:all $transition-speed-long;
+	-webkit-transition:all $transition-speed-long;
+
+	.wrapper{
+		@include animates();
+	}
+
+	&.hidden {
+		top:0;
+		bottom:100%;
+		margin-top:-5 * $gridunit;
+	}
+
+	&.animating{
+		z-index:2;
+	}
+
+	&.nodisp{
+		display:none;
+	}
+}
+
+@media only screen and (max-width: $mobile-barrier) {
+	nav#tabs{ 
+		height:$gridunit * 2;
+
+		a{
+			padding-top:$gridunit/2;
+			padding-bottom:$gridunit/2;
+			font-size:$gridunit/2;
+		}
+	}
+
+	.tabbody{
+		top: $gridunit * 2;
+	}
+}
+
+
+@media only screen and (min-width: 1520){
+  body{zoom:120%} 
+}
+
+@media only screen and (min-width: 2025px){
+  body{zoom:150%} 
+}
+
+@media only screen and (min-width: 2430px){
+  body{zoom:180%} 
+}
+
+@media only screen and (min-width: 2700px){
+  body{zoom:200%} 
+}
+
+@media only screen and (min-width: 2970px){
+  body{zoom:220%} 
+}
+
+@media only screen and (min-width: 3375px){
+  body{zoom:250%} 
+}
+
+@media only screen and (min-width: 3780px){
+  body{zoom:280%} 
+}
+@media only screen and (min-width: 4050px){
+  body{zoom:300%} 
+}

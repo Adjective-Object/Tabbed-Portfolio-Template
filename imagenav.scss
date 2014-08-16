@@ -1,0 +1,43 @@
+$transition-speed: 0.3s;
+
+$nav-alpha: 0.7;
+$nav-alpha-hover: 0.92;
+
+#tabs a {
+
+
+	&:after{
+		background-size: 400%;
+		background-position: center;
+	
+		opacity: 1-$nav-alpha;
+		transition:all $transition-speed;
+		-o-transition:all $transition-speed;
+		-moz-transition:all $transition-speed;
+		-webkit-transition:all $transition-speed;
+	}
+
+	&:hover:after, &.selected:after{
+		opacity: 1-$nav-alpha-hover;
+	}
+
+	&.selected:after{
+		background-size: 100%;
+	}
+
+	&[href="#about"]:after{
+		background-image: url(./splash1.jpg);
+	}
+		
+	&[href="#progs"]:after{
+		background-image: url(./splash2.jpg);
+	}
+		
+	&[href="#artwk"]:after{
+		background-image: url(./splash3.jpg);
+	}
+		
+	&[href="#conta"]:after{
+		background-image: url(./splash4.jpg);
+	}
+}
